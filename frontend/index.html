@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Hola Mundo Frontend</title>
+</head>
+<body>
+  <h1>Hola Mundo desde el Frontend!</h1>
+  <p>Respuesta del Backend: <span id="resp">cargando...</span></p>
+
+  <script>
+  fetch("/api")
+    .then(r => r.text())
+    .then(t => document.getElementById("resp").innerText = t)
+    .catch(e => document.getElementById("resp").innerText = "error: " + e);
+  </script>
+</body>
+</html>
