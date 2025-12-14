@@ -24,10 +24,34 @@ yum update -y
 amazon-linux-extras install docker -y
 systemctl start docker
 systemctl enable docker
-docker run -d -p 80:80 TU_USUARIO_DOCKERHUB/frontend:latest
+
+curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64 \
+-o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+
+mkdir /app
+cd /app
+
+cat <<EOT > docker-compose.yml
+version: "3.8"
+services:
+  backend:
+    image: atvallejo/backend:latest
+    ports:
+      - "3000:3000"
+
+  frontend:
+    image: atvallejo/frontend:latest
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+EOT
+
+/usr/local/bin/docker-compose up -d
 EOF
-  )
-}
+)
+
 
 resource "aws_autoscaling_group" "asg" {
   desired_capacity = 4
