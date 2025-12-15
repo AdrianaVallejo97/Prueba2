@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Hola Mundo</title>
+  <title>Frontend</title>
 </head>
 <body>
-  <h1>Frontend funcionando</h1>
+  <h1>Frontend</h1>
   <button onclick="callBackend()">Llamar Backend</button>
-  <p id="response"></p>
+  <p id="res"></p>
 
   <script>
     function callBackend() {
       fetch("/api")
         .then(res => res.json())
         .then(data => {
-          document.getElementById("response").innerText = data.message;
+          document.getElementById("res").innerText = data.message;
         });
     }
   </script>
