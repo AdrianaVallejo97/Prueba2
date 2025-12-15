@@ -5,13 +5,13 @@
   <title>Hola Mundo</title>
 </head>
 <body>
-  <h1>Frontend</h1>
+  <h1>Frontend funcionando</h1>
   <button onclick="callBackend()">Llamar Backend</button>
   <p id="response"></p>
 
   <script>
     function callBackend() {
-      fetch("http://" + window.location.hostname + ":3000/api")
+      fetch("/api")
         .then(res => res.json())
         .then(data => {
           document.getElementById("response").innerText = data.message;

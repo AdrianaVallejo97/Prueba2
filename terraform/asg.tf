@@ -50,8 +50,8 @@ EOT
 
 /usr/local/bin/docker-compose up -d
 EOF
-)
-
+  )
+}   # 👈 ESTA LLAVE FALTABA
 
 resource "aws_autoscaling_group" "asg" {
   desired_capacity = 4
